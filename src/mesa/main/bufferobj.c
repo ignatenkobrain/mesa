@@ -2412,3 +2412,31 @@ _mesa_ClearBufferSubData(GLenum target,
     _mesa_error(ctx, GL_INVALID_OPERATION, "glClearBufferSubData");
     return;
 }
+
+/**
+ * Default fallback for \c dd_function_table::ClearBufferSubData().
+ * Called via glClearBufferSubData().
+ */
+static void
+_mesa_clear_buffer_subdata(struct gl_context *ctx,
+                           GLenum target,
+                           GLenum internalformat,
+                           GLintptr offset,
+                           GLsizeptr size,
+                           GLenum format,
+                           GLenum type,
+                           const GLvoid * data)
+{
+    GET_CURRENT_CONTEXT(ctx);
+    struct gl_buffer_object *bufObj;
+    bufObj = get_buffer(ctx, "glBufferDataARB", target);
+    bufObj = buffer_object_subdata_range_good(ctx, target, offset, size,
+                                              "glBufferSubDataARB" );
+    if (!bufObj)
+        return;
+    if (size == 0)
+        return;
+    _mesa_buffer_map_range(ctx, offset, size, NULL, bufObj);
+    memcpy(bufObj->Pointer, data, bufObj->Length);
+    return;
+}
