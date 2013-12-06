@@ -2388,3 +2388,27 @@ _mesa_InvalidateBufferData(GLuint buffer)
     */
    return;
 }
+
+void GLAPIENTRY
+_mesa_ClearBufferData(GLenum target,
+                      GLenum internalformat,
+                      GLenum format,
+                      GLenum type,
+                      const GLvoid * data)
+{
+    _mesa_error(ctx, GL_INVALID_OPERATION, "glClearBufferData");
+    return;
+}
+
+void GLAPIENTRY
+_mesa_ClearBufferSubData(GLenum target,
+                         GLenum internalformat,
+                         GLintptr offset,
+                         GLsizeptr size,
+                         GLenum format,
+                         GLenum type,
+                         const GLvoid * data)
+{
+    _mesa_error(ctx, GL_INVALID_OPERATION, "glClearBufferSubData");
+    return;
+}
