@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE OpenGLAPI SYSTEM "gl_API.dtd">
+
+<OpenGLAPI>
+<category name="GL_ARB_clear_buffer_object" number="121">
+    <function name="ClearBufferData" offset="assign">
+        <param name="target" type="GLenum"/>
+        <param name="internalformat" type="GLenum"/>
+        <param name="format" type="GLenum"/>
+        <param name="type" type="GLenum"/>
+        <param name="data" type="const GLvoid *"/>
+    </function>
+    <function name="ClearBufferSubData" offset="assign">
+        <param name="target" type="GLenum"/>
+        <param name="internalformat" type="GLenum"/>
+        <param name="offset" type="GLintptr"/>
+        <param name="size" type="GLsizeiptr"/>
+        <param name="format" type="GLenum"/>
+        <param name="type" type="GLenum"/>
+        <param name="data" type="const GLvoid *"/>
+    </function>
+
+<!-- TODO: Add functions which requires EXT_direct_state_access -->
+
+</category>
+</OpenGLAPI>
