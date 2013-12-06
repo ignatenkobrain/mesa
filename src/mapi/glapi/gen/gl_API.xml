@@ -8462,6 +8462,8 @@
 
 <!-- ARB extensions #120...#124 -->
 
+<xi:include href="ARB_clear_buffer_object.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
 <xi:include href="ARB_vertex_attrib_binding.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
 <!-- ARB extension #126 -->
