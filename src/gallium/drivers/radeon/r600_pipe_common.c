@@ -400,6 +400,12 @@ static int r600_get_compute_param(struct pipe_screen *screen,
 		}
 		return sizeof(uint64_t);
 
+	case PIPE_COMPUTE_CAP_MAX_CLOCK_FREQUENCY:
+		if (ret) {
+			return rscreen->info.max_sclk;
+		}
+		return sizeof(uint32_t);
+
 	default:
 		fprintf(stderr, "unknown PIPE_COMPUTE_CAP %d\n", param);
 		return 0;

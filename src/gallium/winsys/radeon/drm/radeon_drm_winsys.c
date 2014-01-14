@@ -101,6 +101,10 @@
 #define RADEON_INFO_VCE_FW_VERSION 0x1b
 #endif
 
+#ifndef RADEON_INFO_MAX_SCLK
+#define RADEON_INFO_MAX_SCLK 0x1a
+#endif
+
 #ifndef RADEON_CS_RING_UVD
 #define RADEON_CS_RING_UVD	3
 #endif
@@ -378,6 +382,9 @@ static boolean do_winsys_init(struct radeon_drm_winsys *ws)
     }
     ws->info.gart_size = gem_info.gart_size;
     ws->info.vram_size = gem_info.vram_size;
+
+    radeon_get_drm_value(ws->fd, RADEON_INFO_MAX_SCLK, NULL,
+                         &ws->info.max_sclk);
 
     ws->num_cpus = sysconf(_SC_NPROCESSORS_ONLN);
 
